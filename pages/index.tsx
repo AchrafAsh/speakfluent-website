@@ -25,21 +25,24 @@ const Home: React.FC = () => {
     }
 
     return (
-        <div className='max-w-6xl mx-auto'>
+        <div className='max-w-6xl mx-6 md:mx-auto'>
             <Head>
                 <title>
                     Speak Fluent: Evaluate your pronunciation. Become fluent.
                 </title>
                 <link rel='icon' href='/images/logo-color.png' />
             </Head>
-            <div className='my-12'>
-                <img src='/images/logo-color.png' className='h-10 w-10' />
+            <div className='py-6 md:py-12'>
+                <img
+                    src='/images/logo-color.png'
+                    className='w-8 h-8 md:h-10 md:w-10'
+                />
             </div>
             <section id='hero' className=''>
-                <div className='flex flex-row'>
+                <div className='flex flex-col space-y-8 md:flex-row'>
                     <div id='hero-text' className='w-full'>
                         <div className='mb-6'>
-                            <h1 className='font-black text-3xl uppercase'>
+                            <h1 className='font-black text-2xl md:text-3xl uppercase leading-7'>
                                 Evaluate your pronunciation. <br />
                                 Become fluent.
                             </h1>
@@ -55,17 +58,17 @@ const Home: React.FC = () => {
                                 action='https://formspree.io'
                                 method='POST'
                             >
-                                <div className='border border-gray-400 rounded-lg overflow-hidden flex flex-row max-w-sm my-3 shadow'>
+                                <div className='border border-gray-400 rounded-lg overflow-hidden max-w-sm my-3 shadow flex flex-row'>
                                     <input
                                         type='email'
                                         name='email'
                                         id='email'
                                         placeholder='Your email'
-                                        className='outline-none px-4 py-2 flex-grow'
+                                        className='outline-none px-4 py-2 w-full'
                                         disabled={status === 'LOADING'}
                                     />
                                     {status === 'LOADING' ? (
-                                        <div className='px-6 pt-3 bg-green-400 text-white flex'>
+                                        <div className='px-6 pt-3 bg-green-400 text-white'>
                                             <div className='w-3 h-3 rounded-full animate-bounce bg-gray-200 opacity-75'></div>
                                         </div>
                                     ) : (
@@ -125,8 +128,8 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </section>
-            <section id='value-props' className='my-20'>
-                <div className='grid grid-cols-2 gap-10 max-w-4xl mx-auto'>
+            <section id='value-props' className='pt-24'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto'>
                     <ValueProp
                         color='orange-200'
                         icon='/images/detective.png'
@@ -153,9 +156,12 @@ const Home: React.FC = () => {
                     />
                 </div>
             </section>
-            <footer className='mt-24'>
-                <div className='my-24'>
-                    <img src='/images/footer.png' className='w-full' />
+            <footer>
+                <div className='py-24'>
+                    <img
+                        src='/images/footer.png'
+                        className='absolute inset-x-0 md:relative w-full'
+                    />
                 </div>
                 <div>
                     <div className='flex flex-row justify-between'>
@@ -172,7 +178,7 @@ const Home: React.FC = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className='text-center my-6'>
+                    <div className='text-center py-6'>
                         <small className='font-thin text-center'>
                             built from ENSTA Paris by Achraf ASH
                         </small>
@@ -196,7 +202,7 @@ const ValueProp: React.FC<{
             >
                 <img src={icon} alt='' />
             </div>
-            <div className='max-w-xs'>
+            <div className='w-2/3 max-w-xs'>
                 <h3 className='font-semibold mb-1'>{title}</h3>
                 <p className='font-light'>{description}</p>
             </div>
