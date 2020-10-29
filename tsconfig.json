@@ -21,20 +21,23 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": [
-        "components/*"
+        "src/components/*"
       ],
       "@reducers/*": [
-        "reducers/*"
+        "src/reducers/*"
       ],
       "@actions/*": [
-        "actions/*"
+        "src/actions/*"
       ],
       "@utils/*": [
-        "utils/*"
+        "src/utils/*"
       ],
       "@styles/*": [
         "styles/*"
-      ]
+      ],
+      "@layout/*": [
+        "src/layout/*"
+      ],
     }
   },
   "include": [

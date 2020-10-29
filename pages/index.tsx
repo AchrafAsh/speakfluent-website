@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
-import Widget from 'src/components/Widget'
+import Widget from '@components/Widget'
+import Footer from '@layout/Footer'
 
 const Home: React.FC = () => {
     const [status, setStatus] = useState('')
@@ -34,10 +35,14 @@ const Home: React.FC = () => {
                 <link rel='icon' href='/images/logo-color.png' />
             </Head>
             <div className='py-6'>
-                <img
-                    src='/images/logo-color.png'
-                    className='w-8 h-8 md:h-10 md:w-10'
-                />
+                <Link href='/'>
+                    <a>
+                        <img
+                            src='/images/logo-color.png'
+                            className='w-8 h-8 md:h-10 md:w-10'
+                        />
+                    </a>
+                </Link>
             </div>
             <section id='hero'>
                 <div className='flex flex-col space-y-8 md:flex-row md:items-center'>
@@ -105,58 +110,52 @@ const Home: React.FC = () => {
                     <ValueProp
                         color='orange-200'
                         icon='/images/detective.png'
-                        title='Analyze your pronunciation'
-                        description='Thanks to our attention mechanism, get feedback on your mistakes.'
+                        title='Learn from your mistakes'
+                        description='See where your pronunciation failed thanks to our attention mechanism.'
                     />
                     <ValueProp
-                        icon='/images/up.png'
+                        icon='/images/brain.png'
                         color='blue-200'
-                        title='Fitted for every level'
-                        description='lorem ipsum'
+                        title='Always getting better'
+                        description='Your users are constantly improving and so is our AI.'
                     />
                     <ValueProp
                         color='red-200'
                         icon='/images/rocket.png'
-                        title='Speak like a native in no time!'
-                        description='lorem ipsum'
+                        title='Boost your skills'
+                        description='Writing skills are great, but speaking skills are way better.'
                     />
                     <ValueProp
                         color='green-200'
                         icon='/images/mic.png'
-                        title='Ready to use widget'
-                        description='Simply integrate our plugin to let your users record themselves.'
+                        title='Get started in no time'
+                        description='Simply embed our widget and get started right away.'
                     />
                 </div>
             </section>
-            <footer>
-                <div className='py-24'>
-                    <img
-                        src='/images/footer.png'
-                        className='absolute inset-x-0 md:relative w-full'
-                    />
-                </div>
-                <div>
-                    <div className='flex flex-row justify-between'>
-                        <div>
-                            <b>Speak Fluent</b>
-                            <br />
-                            <small className='font-hairline'>© 2020</small>
-                        </div>
-                        <div>
-                            <Link href='/'>
-                                <a>
-                                    <img src='/images/logo.svg' alt='' />
-                                </a>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className='text-center py-6'>
-                        <small className='font-thin text-center'>
-                            built from ENSTA Paris by Achraf ASH
-                        </small>
+            <section id='contribute' className='pt-24'>
+                <div className='text-center'>
+                    <h2 className='text-2xl font-semibold mb-3'>
+                        Want to help us make{' '}
+                        <Link href='/'>
+                            <a className='text-green-400'>SpeakFluent</a>
+                        </Link>{' '}
+                        even better ?
+                    </h2>
+                    <div>
+                        <Link href='/contribute'>
+                            <a>
+                                contribute
+                                <img
+                                    src='/images/right-arrow.svg'
+                                    className='ml-2 w-3 h-3 mb-1 inline-block'
+                                />
+                            </a>
+                        </Link>
                     </div>
                 </div>
-            </footer>
+            </section>
+            <Footer />
         </div>
     )
 }

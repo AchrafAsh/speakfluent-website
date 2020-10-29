@@ -37,7 +37,6 @@ const Widget: React.FC = () => {
     function stopRecording() {
         if (recorder)
             recorder.stop().then(({ blob, buffer }) => {
-                blob = blob
                 console.log('stop recording')
                 setStatus('LOADING')
                 getScore(blob)
@@ -46,23 +45,22 @@ const Widget: React.FC = () => {
 
     async function getScore(blob: Blob) {
         setStatus('LOADING')
-        console.log('ready to post')
-        setAudioURL(window.URL.createObjectURL(blob))
+        blob = blob
+        let url = window.URL.createObjectURL(blob)
+        let audioUrl = url.split('/')[3]
+        setAudioURL(url)
 
         try {
             // post file to REST API prediction endpoint
             const formData = new FormData()
             formData.append('word', label)
-            console.log({ blob, audioURL })
-            formData.append('audio', blob, label)
+            formData.append('audio', blob, audioURL)
 
             const response = await fetch('http://localhost:5000/predict', {
                 method: 'POST',
                 mode: 'cors',
                 body: formData
             })
-
-            console.log({ response })
 
             const { score } = await response.json()
             setScore(score)
@@ -92,7 +90,7 @@ const Widget: React.FC = () => {
         <div>
             <div
                 id='widget'
-                className='bg-white p-3 shadow-md border border-gray-400 rounded-lg flex flex-col items-center space-y-6'
+                className='bg-white p-3 shadow-md border border-gray-400 rounded-lg flex flex-col items-center space-y-3'
             >
                 <div className='flex flex-row items-center justify-between bg-gray-200 rounded pr-3'>
                     <div className='px-6 py-1'>read</div>
@@ -167,7 +165,7 @@ const Widget: React.FC = () => {
     )
 }
 
-const Loader: React.FC = () => {
+export const Loader: React.FC = () => {
     return (
         <svg
             viewBox='0 0 135 140'

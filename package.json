@@ -12,7 +12,8 @@
     "next": "9.5.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "recorder-js": "^1.0.7"
+    "recorder-js": "^1.0.7",
+    "swr": "^0.3.7"
   },
   "devDependencies": {
     "@types/dom-mediacapture-record": "^1.0.7",
