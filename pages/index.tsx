@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
+import Widget from 'src/components/Widget'
 
 const Home: React.FC = () => {
     const [status, setStatus] = useState('')
@@ -25,21 +26,21 @@ const Home: React.FC = () => {
     }
 
     return (
-        <div className='max-w-6xl mx-6 md:mx-auto'>
+        <div className='max-w-6xl px-6 md:mx-auto'>
             <Head>
                 <title>
                     Speak Fluent: Evaluate your pronunciation. Become fluent.
                 </title>
                 <link rel='icon' href='/images/logo-color.png' />
             </Head>
-            <div className='py-6 md:py-12'>
+            <div className='py-6'>
                 <img
                     src='/images/logo-color.png'
                     className='w-8 h-8 md:h-10 md:w-10'
                 />
             </div>
-            <section id='hero' className=''>
-                <div className='flex flex-col space-y-8 md:flex-row'>
+            <section id='hero'>
+                <div className='flex flex-col space-y-8 md:flex-row md:items-center'>
                     <div id='hero-text' className='w-full'>
                         <div className='mb-6'>
                             <h1 className='font-black text-2xl md:text-3xl uppercase leading-7'>
@@ -86,36 +87,7 @@ const Home: React.FC = () => {
                         <div className='flex flex-col items-center'>
                             <div className='rounded-full p-6 bg-green-200 w-64 h-64 mx-auto'>
                                 <div className='w-full h-full rounded-full bg-green-400 flex justify-center items-center'>
-                                    <div
-                                        id='widget'
-                                        className='bg-white p-3 shadow-md border border-gray-400 rounded-lg flex flex-col items-center space-y-6'
-                                    >
-                                        <div className='flex flex-row items-center justify-between bg-gray-200 rounded pr-3'>
-                                            <div className='px-6 py-1'>
-                                                read
-                                            </div>
-                                            <select
-                                                name='label'
-                                                id='label'
-                                                className='px-6 bg-gray-200 font-semibold'
-                                            >
-                                                <option value='have'>
-                                                    have
-                                                </option>
-                                                <option value='house'>
-                                                    house
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <button className='outline-none rounded-full p-6 bg-gray-200'>
-                                                <img
-                                                    src='/images/mic.png'
-                                                    alt=''
-                                                />
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <Widget />
                                 </div>
                             </div>
                             <div className=''>
