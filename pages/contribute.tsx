@@ -80,13 +80,20 @@ const Page: React.FC<{ samples: Sample[] }> = ({ samples }) => {
 export default Page
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    // fetch available labels
-    const res = await fetch('http://localhost:5000/labels')
-    const { samples } = await res.json()
+    // fetch available samples
+    let samples = []
+    try {
+        const res = await fetch('http://localhost:5000/labels')
+        const response = await res.json()
+        samples = response.samples
+    } catch (error) {
+        console.log(error)
+        samples = []
+    }
 
     return {
         props: {
-            samples
+            samples: samples
         }
     }
 }
